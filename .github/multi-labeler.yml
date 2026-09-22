@@ -1,0 +1,14 @@
+documentation:
+  - docs/**
+  - README.md
+source:
+  - src/**
+tests:
+  - tests/**
+build:
+  - "*.props"
+  - "*.targets"
+  - "*.csproj"
+  - global.json
+  - version.json
+  - .github/workflows/**
