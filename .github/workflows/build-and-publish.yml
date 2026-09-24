@@ -16,6 +16,8 @@ jobs:
   build-test:
     name: Build and test
     runs-on: ubuntu-latest
+    env:
+      TYPESAFE_API_KEY: ${{ secrets.TYPESAFE_API_KEY }}
 
     steps:
       - name: Check out repository
@@ -38,10 +40,8 @@ jobs:
         run: dotnet test --project tests/unit-tests/Typesafe.Jev.UnitTests.csproj --configuration Release --no-restore
 
       - name: Test integration project
-        if: ${{ secrets.TYPESAFE_API_KEY != '' }}
+        if: ${{ env.TYPESAFE_API_KEY != '' }}
         run: dotnet test --project tests/integration-tests/Typesafe.Jev.IntegrationTests.csproj --configuration Release --no-restore
-        env:
-          TYPESAFE_API_KEY: ${{ secrets.TYPESAFE_API_KEY }}
 
   calculate-version:
     name: Calculate release version
