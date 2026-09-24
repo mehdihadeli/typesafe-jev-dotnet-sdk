@@ -69,7 +69,7 @@ jobs:
         id: version
         shell: bash
         run: |
-          version="$($RUNNER_TEMP/nbgv/nbgv get-version -v SemVer2)"
+          version="$("$RUNNER_TEMP/nbgv/nbgv" get-version -v SemVer2)"
           echo "Calculated SemVer2 version: $version"
           echo "version=$version" >> "$GITHUB_OUTPUT"
 
